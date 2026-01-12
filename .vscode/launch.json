@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "FastAPI CLI (Dev)",
+            "name": "Local: Run & Debug",
             "type": "debugpy",
             "request": "launch",
             "module": "fastapi",
@@ -12,6 +12,23 @@
             ],
             "jinja": true,
             "justMyCode": true
+        },
+        {
+            "name": "Docker: Build, Run & Debug",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/app"
+                }
+            ],
+            "preLaunchTask": "docker-build-run-debug",
+            "postDebugTask": "docker-compose-down"
         }
     ]
 }

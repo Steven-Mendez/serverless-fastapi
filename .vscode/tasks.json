@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "docker-build-run-debug",
+            "type": "shell",
+            "command": "docker compose up --build",
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "python",
+                "pattern": {
+                    "regexp": "^.*(Uvicorn running on) (http://[^\\s]+).*",
+                    "file": 1,
+                    "location": 2,
+                    "message": 0
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*Will watch for changes in these directories.*",
+                    "endsPattern": ".*Uvicorn running on http://.*"
+                }
+            },
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "docker-compose-down",
+            "type": "shell",
+            "command": "docker compose down",
+            "presentation": {
+                "reveal": "silent"
+            }
+        }
+    ]
+}
